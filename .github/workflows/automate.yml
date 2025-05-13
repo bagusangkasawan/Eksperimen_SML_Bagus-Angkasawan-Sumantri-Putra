@@ -3,9 +3,8 @@ name: Preprocessing Otomatis
 on:
   push:
     paths:
-      - '**/automate_*.py'       # Jalan kalau ada update file automate
-      - 'obesity_data_raw.csv'   # Atau file raw dataset diubah
-  workflow_dispatch:             # Bisa dijalankan manual juga
+      - '**/automate_*.py'
+      - 'obesity_data_raw.csv'
 
 jobs:
   run-preprocessing:

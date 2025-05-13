@@ -84,5 +84,5 @@ if __name__ == "__main__":
     X_train, X_test, y_train, y_test = split_data(X_scaled, y)
     
     # Simpan data yang sudah diproses (ke folder namadataset_preprocessing)
-    processed_data_path = '../preprocessing/obesity_data_preprocessing.csv' 
+    processed_data_path = './preprocessing/obesity_data_preprocessing.csv' 
     save_preprocessed_data(df, processed_data_path)
