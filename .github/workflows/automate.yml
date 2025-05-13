@@ -25,7 +25,7 @@ jobs:
 
     - name: Jalankan script preprocessing
       run: |
-        python preprocessing/automate_Bagus-Angkasawan-Sumantri-Putra
+        python preprocessing/automate_Bagus-Angkasawan-Sumantri-Putra.py
 
     - name: Tampilkan hasil output
       run: cat preprocessing/obesity_data_preprocessing.csv
