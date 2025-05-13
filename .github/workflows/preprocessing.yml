@@ -13,8 +13,6 @@ jobs:
     steps:
     - name: Checkout repo
       uses: actions/checkout@v2
-      with:
-        token: ${{ secrets.GITHUB_PAT }}
 
     - name: Setup Python
       uses: actions/setup-python@v2
@@ -41,8 +39,9 @@ jobs:
         git add preprocessing/obesity_data_preprocessing.csv
         git commit -m "Menambahkan hasil preprocessing otomatis [skip ci]" || echo "Tidak ada perubahan untuk di-commit"
         
-    - name: Push perubahan
-      uses: ad-m/github-push-action@master
+    - name: Upload hasil preprocessing sebagai artifact
+      uses: actions/upload-artifact@v2
       with:
-        github_token: ${{ secrets.GITHUB_PAT }}
-        branch: ${{ github.ref }}
+        name: hasil-preprocessing
+        path: preprocessing/obesity_data_preprocessing.csv
+        retention-days: 90
