@@ -13,6 +13,8 @@ jobs:
     steps:
     - name: Checkout repo
       uses: actions/checkout@v2
+      with:
+        token: ${{ secrets.GITHUB_PAT }}
 
     - name: Setup Python
       uses: actions/setup-python@v2
@@ -42,5 +44,5 @@ jobs:
     - name: Push perubahan
       uses: ad-m/github-push-action@master
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        github_token: ${{ secrets.GITHUB_PAT }}
         branch: ${{ github.ref }}
