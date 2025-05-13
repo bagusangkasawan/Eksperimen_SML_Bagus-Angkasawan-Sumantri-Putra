@@ -64,7 +64,7 @@ def save_preprocessed_data(df, output_path):
     print(f"Data yang sudah diproses disimpan di {output_path}")
 
 if __name__ == "__main__":
-    # Path dataset mentah (dari folder namadataset_raw)
+    # Path dataset mentah
     raw_data_path = './obesity_data_raw.csv'
     
     # Load dataset
@@ -83,6 +83,6 @@ if __name__ == "__main__":
     # Split data
     X_train, X_test, y_train, y_test = split_data(X_scaled, y)
     
-    # Simpan data yang sudah diproses (ke folder namadataset_preprocessing)
+    # Simpan data yang sudah diproses
     processed_data_path = './preprocessing/obesity_data_preprocessing.csv' 
     save_preprocessed_data(df, processed_data_path)
