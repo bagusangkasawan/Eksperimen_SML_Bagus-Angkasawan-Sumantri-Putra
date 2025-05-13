@@ -1,38 +1,31 @@
-name: Automate Data Preprocessing
+name: Preprocessing Otomatis
 
 on:
   push:
-    branches:
-      - main  # Workflow ini akan berjalan saat ada perubahan di branch 'main'
+    paths:
+      - '**/automate_*.py'       # Jalan kalau ada update file automate
+      - 'obesity_data_raw.csv'   # Atau file raw dataset diubah
+  workflow_dispatch:             # Bisa dijalankan manual juga
 
 jobs:
-  preprocess:
-    runs-on: ubuntu-latest  # Menjalankan di lingkungan Ubuntu
+  run-preprocessing:
+    runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2  # Mengambil kode dari repositori
+    - name: Checkout repo
+      uses: actions/checkout@v2
 
-      - name: Set up Python
-        uses: actions/setup-python@v2  # Mengatur Python di lingkungan
-        with:
-          python-version: '3.8'  # Menggunakan versi Python 3.8
+    - name: Setup Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.10
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install pandas numpy scikit-learn 
+    - name: Install dependencies
+      run: pip install pandas numpy scikit-learn
 
-      - name: Run Automate Script
-        run: |
-          python preprocessing/automate_Bagus-Angkasawan-Sumantri-Putra.py 
+    - name: Jalankan script preprocessing
+      run: |
+        python preprocessing/automate_Bagus-Angkasawan-Sumantri-Putra
 
-      - name: Upload Processed Data
-        uses: actions/upload-artifact@v3.1.3    # Mengupload data yang sudah diproses sebagai artifact
-        with:
-          name: processed-data
-          path: preprocessing/obesity_data_preprocessing.csv  # Path file yang sudah diproses
-
-      - name: Clean up
-        run: |
-          echo "Cleaning up after process" 
+    - name: Tampilkan hasil output
+      run: cat preprocessing/obesity_data_preprocessing.csv
