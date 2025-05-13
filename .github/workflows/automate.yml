@@ -28,7 +28,7 @@ jobs:
           python preprocessing/automate_Bagus-Angkasawan-Sumantri-Putra.py 
 
       - name: Upload Processed Data
-        uses: actions/upload-artifact@v2  # Mengupload data yang sudah diproses sebagai artifact
+        uses: actions/upload-artifact@v3    # Mengupload data yang sudah diproses sebagai artifact
         with:
           name: processed-data
           path: preprocessing/obesity_data_preprocessing.csv  # Path file yang sudah diproses
