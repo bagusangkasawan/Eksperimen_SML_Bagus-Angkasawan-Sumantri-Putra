@@ -65,7 +65,7 @@ def save_preprocessed_data(df, output_path):
 
 if __name__ == "__main__":
     # Path dataset mentah (dari folder namadataset_raw)
-    raw_data_path = '../obesity_data_raw.csv'
+    raw_data_path = './obesity_data_raw.csv'
     
     # Load dataset
     df = load_data(raw_data_path)
