@@ -23,25 +23,14 @@ jobs:
       run: pip install pandas numpy scikit-learn
 
     - name: Jalankan script preprocessing
-      run: |
-        python preprocessing/automate_Bagus-Angkasawan-Sumantri-Putra.py
+      run: python preprocessing/automate_Bagus-Angkasawan-Sumantri-Putra.py
 
-    - name: Tampilkan hasil output
-      run: cat preprocessing/obesity_data_preprocessing.csv
-      
-    - name: Konfigurasi Git
+    - name: Commit dan Push file hasil
       run: |
-        git config --local user.email "github-actions[bot]@users.noreply.github.com"
-        git config --local user.name "github-actions[bot]"
-        
-    - name: Commit hasil preprocessing
-      run: |
+        git config user.name "github-actions"
+        git config user.email "github-actions@github.com"
         git add preprocessing/obesity_data_preprocessing.csv
-        git commit -m "Menambahkan hasil preprocessing otomatis [skip ci]" || echo "Tidak ada perubahan untuk di-commit"
-        
-    - name: Upload hasil preprocessing sebagai artifact
-      uses: actions/upload-artifact@v2
-      with:
-        name: hasil-preprocessing
-        path: preprocessing/obesity_data_preprocessing.csv
-        retention-days: 90
+        git commit -m "Update hasil preprocessing otomatis"
+        git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

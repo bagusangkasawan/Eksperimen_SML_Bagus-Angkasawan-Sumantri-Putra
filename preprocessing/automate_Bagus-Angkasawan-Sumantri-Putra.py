@@ -18,7 +18,7 @@ def detect_outliers_iqr(data):
     return outliers
 
 def preprocess_data(df):
-    """Melakukan preprocessing data (menghapus missing value, duplikasi, outlier, dsb.)"""
+    """Melakukan preprocessing data (menghapus missing value, duplikasi, outlier, dll.)"""
     
     # Cek dan hapus missing value
     if df.isnull().sum().any():
