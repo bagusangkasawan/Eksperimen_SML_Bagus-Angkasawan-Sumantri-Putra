@@ -80,9 +80,13 @@ if __name__ == "__main__":
     # Scaling data
     X_scaled = scale_data(X)
     
+    # Gabungkan kembali fitur yang telah diskalakan dan target
+    df_scaled = pd.DataFrame(X_scaled, columns=X.columns)
+    df_scaled['ObesityCategory'] = y.reset_index(drop=True)
+    
     # Split data
     X_train, X_test, y_train, y_test = split_data(X_scaled, y)
     
     # Simpan data yang sudah diproses
     processed_data_path = './preprocessing/obesity_data_preprocessing.csv' 
-    save_preprocessed_data(df, processed_data_path)
+    save_preprocessed_data(df_scaled, processed_data_path)
